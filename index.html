@@ -4,539 +4,481 @@
 
 <head>
 
+  <meta charset="UTF-8" />
 
-   
+  <title>ABS SOFTWARE PRO</title>
 
-    <meta charset="UTF-8">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.29/jspdf.plugin.autotable.min.js"></script>
 
-    <title>Ads on Monetage mini app </title>
+  <style>
 
-    <style>
+     /* FUCK YOU DECODER YOUR DAD IS MORSALIN . I KNOW TORA DECODE KORTE ASHBI NE RANDOM TA GUTA , API ER TA TO DIBI NA MC FUCK  */
 
-        body {
+    body { font-family: 'Poppins', sans-serif; background: linear-gradient(145deg, #1f2b37, #0c1117); color: #e0f7ff; margin: 0; padding: 40px; max-width: 900px; margin: auto; }
 
-            margin: 0;
+    h3 { text-align: center; color: #58ccff; margin-bottom: 20px; text-shadow: 0 0 10px #58ccff; animation: glow 2s ease-in-out infinite alternate; }
 
-            padding: 0;
+    @keyframes glow { 0% { text-shadow: 0 0 10px #58ccff, 0 0 20px #58ccff; } 100% { text-shadow: 0 0 20px #58ccff, 0 0 40px #58ccff; } }
 
-            background-color: #121212;
+    .form-container, #loginBox { background: #0c1622; padding: 30px; border-radius: 15px; box-shadow: 0 0 20px #58ccff80; margin-top: 30px; transition: all 0.3s ease-in-out; }
 
-            color: #fff;
+    select, button, input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: none; font-size: 16px; background: #1b2a38; color: #e0f7ff; box-shadow: inset 0 0 5px #58ccff; transition: 0.2s; }
 
-            font-family: Arial, sans-serif;
+    select:hover, button:hover, input:hover { box-shadow: 0 0 8px #58ccff; background-color: #13202c; }
 
-            display: flex;
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; color: #e0f7ff; }
 
-            justify-content: center;
+    th, td { border: 1px solid #58ccff; padding: 10px; text-align: center; }
 
-            align-items: center;
+    th { background-color: #0c1622; }
 
-            height: 100vh;
+    #signalTableContainer { display: none; animation: fadeIn 0.5s ease-in-out; }
 
-        }
+    button { cursor: pointer; background-color: #58ccff; color: #000; font-weight: bold; }
 
-        .container {
+    button:hover { background-color: #70daff; }
 
-            text-align: center;
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-            background: #1f1f1f;
+    .copy-btn { background: #ff3366; color: #fff; padding: 5px 10px; border-radius: 6px; cursor: pointer; font-weight: bold; margin-top: 5px; }
 
-            padding: 20px;
+    .copy-btn:hover { background: #ff4455; }
 
-            border-radius: 10px;
+    footer { margin-top: 60px; text-align: center; color: #ccc; font-size: 14px; border-top: 1px solid #222; padding-top: 20px; }
 
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-
-            width: 300px;
-
-        }
-
-        .container h1 {
-
-            font-size: 20px;
-
-            color: green;
-
-            margin-bottom: 10px;
-
-        }
-
-        .developer {
-
-            font-size: 12px;
-
-            background-color: green;
-
-            padding: 5px 10px;
-
-            border-radius: 5px;
-
-            margin-bottom: 15px;
-
-            display: inline-block;
-
-            cursor: pointer;
-
-        }
-
-        .stats {
-
-            margin: 10px 0;
-
-        }
-
-        .stats p {
-
-            margin: 5px 0;
-
-            font-size: 14px;
-
-        }
-
-        .progress-circle {
-
-            width: 80px;
-
-            height: 80px;
-
-            border: 4px solid green;
-
-            border-radius: 50%;
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-            margin: 10px auto;
-
-        }
-
-        .progress-circle span {
-
-            font-size: 18px;
-
-            font-weight: bold;
-
-        }
-
-        .buttons button {
-
-            width: 90%;
-
-            margin: 5px 0;
-
-            padding: 10px;
-
-            font-size: 14px;
-
-            border: none;
-
-            border-radius: 5px;
-
-            color: white;
-
-            background: green;
-
-            cursor: pointer;
-
-        }
-
-        .buttons button:hover {
-
-            background: darkorange;
-
-        }
-
-        .withdraw-section {
-
-            margin-top: 20px;
-
-            display: none;
-
-            padding: 20px;
-
-            background-color: #2a2a2a;
-
-            border-radius: 10px;
-
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-
-        }
-
-        .withdraw-section input, .withdraw-section select {
-
-            width: 100%;
-
-            padding: 12px;
-
-            margin: 8px 0;
-
-            border-radius: 5px;
-
-            border: 2px solid #555;
-
-            background-color: #333;
-
-            color: #fff;
-
-        }
-
-        .withdraw-section input:focus, .withdraw-section select:focus {
-
-            border-color: green;
-
-            outline: none;
-
-        }
-
-        .withdraw-section button {
-
-            background-color: green;
-
-            width: 100%;
-
-            padding: 12px;
-
-            font-size: 16px;
-
-            margin-top: 15px;
-
-            border-radius: 5px;
-
-            cursor: pointer;
-
-        }
-
-        .withdraw-section button:hover {
-
-            background-color: #006400;
-
-        }
-
-        #withdraw-status {
-
-            color: red;
-
-            font-size: 14px;
-
-            margin-top: 10px;
-
-        }
-
-        .user-info {
-
-            margin: 10px 0;
-
-        }
-
-        .user-info p {
-
-            font-size: 14px;
-
-            margin: 5px 0;
-
-        }
-
-    </style>
-
-<link rel="me" href="https://www.blogger.com/profile/12615525391666988711" />
-
-<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
-
-<meta name='google-adsense-platform-domain' content='blogspot.com'/>
-
-<link rel="me" href="https://www.blogger.com/profile/10983280640489625734" />
-
-<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
-
-<meta name='google-adsense-platform-domain' content='blogspot.com'/>
+  </style>
 
 </head>
 
 <body>
 
-    <div class="container">
-
-        <h1>Earing Technology </h1>
-
-        <div class="developer" onclick="window.location.href='https://t.me/Bossmaster100'">Developer by Md Srabon Ahmed </div>
-
-       
-
-        <!-- Display User Info -->
-
-        <div class="user-info">
-
-            <p>Welcome, <span id="user-name"></span></p>
-
-        </div>
 
 
-        <div class="stats">
-
-            <p>Watched Ads: <span id="watched-ads">0</span></p>
-
-            <p>Earned Points: <span id="earned-points">0</span></p>
-
-        </div>
-
-        <div class="progress-circle">
-
-            <span id="ads-progress">0%</span>
-
-        </div>
-
-        <div class="buttons">
-
-            <button id="watch-ad-btn" onclick="watchAd()">Watch Ad</button>
-
-            <button id="auto-ad-btn" onclick="startAutoAds()">Auto Show Ads</button>
-
-            <button id="stop-auto-btn" onclick="stopAutoAds()">Stop Auto Ads</button>
-
-            <button id="withdraw-btn" onclick="showWithdrawForm()">Withdraw</button>
-
-        </div>
+<h3>🔐 ABS SOFTWARE FULLY AI BASED</h3>
 
 
-        <!-- Withdraw Section -->
 
-        <div class="withdraw-section" id="withdraw-section">
+<div id="loginBox">
 
-            <h3 style="color: orange; margin-bottom: 15px;">Withdrawal Request</h3>
+  <label>Enter Username:</label>
 
-            <input type="number" id="withdraw-amount" placeholder="Enter Points to Withdraw" />
+  <input type="text" id="usernameInput" placeholder="Enter Username">
 
-            <select id="payment-method">
+  <label>Enter Password:</label>
 
-                <option value="bkash">Bkash</option>
+  <input type="password" id="passwordInput" placeholder="Enter Password">
 
-                <option value="nagad">Nagad</option>
+  <button onclick="checkLogin()">Login</button>
 
-                <option value="manual">Manual</option>
+</div>
 
-            </select>
 
-            <input type="text" id="withdraw-phone" placeholder="Enter Phone Number" />
 
-            <button onclick="withdrawPoints()">Withdraw</button>
+<div class="form-container" id="signalFormBox" style="display:none;">
 
-            <p id="withdraw-status"></p>
+  <form id="signalForm">
 
-        </div>
+    <label>Choose Mode:</label>
+
+    <select id="mode" onchange="toggleAssetSelection()">
+
+      <option value="manual">Manual Pair</option>
+
+      <option value="ai">AI Signal</option>
+
+    </select>
+
+
+
+    <div id="assetSelection">
+
+      <label>Choose Asset:</label>
+
+      <select id="asset">
+
+        <!-- Asset options remain same as your code -->
+
+        <option>EUR/USD</option>
+
+        <option>GBP/USD</option>
+
+        <option>USD/JPY</option>
+
+        <option>AUD/USD</option>
+
+        <option>USD/CAD</option>
+
+        <option>USD/CHF</option>
+
+        <option>NZD/USD</option>
+
+        <option>EUR/GBP</option>
+
+        <option>EUR/JPY</option>
+
+        <option>GBP/JPY</option>
+
+        <option>USD/TRY-OTC</option>
+
+        <option>USD/ZAR-OTC</option>
+
+        <option>USD/INR-OTC</option>
+
+        <option>USD/BRL-OTC</option>
+
+        <option>USD/NGN-OTC</option>
+
+        <option>USD/PKR-OTC</option>
+
+        <option>USD/PHP-OTC</option>
+
+        <option>USD/DZD-OTC</option>
+
+        <option>USD/MXN-OTC</option>
+
+        <option>EUR/CHF-OTC</option>
+
+        <option>GBP/CHF-OTC</option>
+
+        <option>AUD/JPY-OTC</option>
+
+        <option>GBP/AUD-OTC</option>
+
+        <option>NZD/JPY-OTC</option>
+
+        <option>FACEBOOK-OTC</option>
+
+        <option>BTC/USD-OTC</option>
+
+        <option>ETH/USD-OTC</option>
+
+        <option>LTC/USD-OTC</option>
+
+        <option>AXP-OTC</option>
+
+        <option>Gold-OTC</option>
+
+        <option>Silver-OTC</option>
+
+        <option>WTI-OTC</option>
+
+        <option>USD/BDT-OTC</option>
+
+        <option>USD/COP-OTC</option>
+
+        <option>JNJ-OTC</option>
+
+        <option>MSFT-OTC</option>
+
+        <option>FLOKI-OTC</option>
+
+      </select>
 
     </div>
 
 
-    <script src='//jagnaimsee.net/vignette.min.js' data-zone='8696393' data-sdk='show_8696393'></script>
 
+    <label>Expiration Time:</label>
 
-    <script>
+    <select id="expiration">
 
-        const MIN_WITHDRAW_POINTS = 5;
+      <option>M1</option>
 
-        const ADMIN_USER_ID = 6665642603;
+      <option>M5</option>
 
-        const BOT_TOKEN = "7474129750:AAHDOrtYnulZqB5V3CH2XaHR_02t_PVwi7M";
+      <option>M15</option>
 
-        let watchedAdsCount = 0;
+    </select>
 
-        let earnedPoints = 0.00;
 
-        let autoAdInterval;
 
+    <label>Number of Signals:</label>
 
-        // Simulate user name from Telegram User ID (replace with actual logic to get user info)
+    <select id="count">
 
-        const telegramUserName = "@exampleUser"; // Replace this line with the actual logic to fetch username
+      <option>1</option>
 
-        document.getElementById("user-name").textContent = telegramUserName;
+      <option>3</option>
 
+      <option>5</option>
 
-        // Check if user data is saved in localStorage
+      <option>10</option>
 
-        if (localStorage.getItem('watchedAdsCount')) {
+    </select>
 
-            watchedAdsCount = parseInt(localStorage.getItem('watchedAdsCount'));
 
-            earnedPoints = parseFloat(localStorage.getItem('earnedPoints'));
 
-            document.getElementById('watched-ads').textContent = watchedAdsCount;
+    <button type="submit">Generate Signals</button>
 
-            document.getElementById('earned-points').textContent = earnedPoints.toFixed(2);
+  </form>
 
-        }
 
 
-        // Function to watch an ad and update stats
+  <div id="signalTableContainer">
 
-        function watchAd() {
+    <table id="signalTable">
 
-            if (typeof show_8696393 === 'function') {
+      <thead>
 
-                show_8696393().then(() => {
+        <tr>
 
-                    // When the ad is shown, we add points
+          <th>Time</th>
 
-                    watchedAdsCount++;
+          <th>Asset</th>
 
-                    document.getElementById('watched-ads').textContent = watchedAdsCount;
+          <th>Direction</th>
 
-                    earnedPoints += 0.50; // Add 0.50 points per ad watched
+          <th>Expiration</th>
 
-                    document.getElementById('earned-points').textContent = earnedPoints.toFixed(2);
+          <th>Accuracy</th>
 
-                    localStorage.setItem('watchedAdsCount', watchedAdsCount);
+          <th>Copy</th>
 
-                    localStorage.setItem('earnedPoints', earnedPoints.toFixed(2));
+        </tr>
 
+      </thead>
 
-                    // Update progress circle
+      <tbody></tbody>
 
-                    updateProgressCircle();
+    </table>
 
-                });
+    <button onclick="exportPDF()">📄 Export as PDF</button>
 
-            }
+  </div>
 
-        }
+</div>
 
 
-        // Update progress circle based on watched ads
 
-        function updateProgressCircle() {
+<footer>
 
-            const percentage = (watchedAdsCount / 10) * 100;
+  © 2025 ABS POWERED BY MORSALIN EXE API FULLY AI BASED | Developed by <strong>@ ABS TEAM OFFICIAL</strong> | All Rights Reserved.
 
-            document.getElementById('ads-progress').textContent = `${percentage}%`;
+</footer>
 
-        }
 
 
-        // Function to start auto showing ads
+<script>
 
-        function startAutoAds() {
+  const correctUsername = "admin";
 
-            autoAdInterval = setInterval(watchAd, 5000); // Auto show ad every 5 seconds
+  const correctPassword = "1234";
 
-            document.getElementById('auto-ad-btn').disabled = true;
+  const directions = ["BUY", "SELL"];
 
-            document.getElementById('stop-auto-btn').disabled = false;
+  const allPairs = Array.from(document.querySelectorAll('#asset option')).map(o => o.value);
 
-        }
 
 
-        // Function to stop auto ads
+  function playSound() {
 
-        function stopAutoAds() {
+    const audio = new Audio('https://www.soundjay.com/button/beep-07.wav');
 
-            clearInterval(autoAdInterval);
+    audio.play();
 
-            document.getElementById('auto-ad-btn').disabled = false;
+  }
 
-            document.getElementById('stop-auto-btn').disabled = true;
 
-        }
 
+  function checkLogin() {
 
-        // Function to show withdraw form
+    const username = document.getElementById("usernameInput").value;
 
-        function showWithdrawForm() {
+    const password = document.getElementById("passwordInput").value;
 
-            document.getElementById('withdraw-section').style.display = 'block';
+    if (username === correctUsername && password === correctPassword) {
 
-        }
+      document.getElementById("loginBox").style.display = "none";
 
+      document.getElementById("signalFormBox").style.display = "block";
 
-        // Function to handle withdrawal
+    } else {
 
-        function withdrawPoints() {
+      alert("Incorrect Username or Password ❌");
 
-            const amount = document.getElementById('withdraw-amount').value;
+    }
 
-            const paymentMethod = document.getElementById('payment-method').value;
+  }
 
-            const phoneNumber = document.getElementById('withdraw-phone').value;
 
 
-            if (amount < MIN_WITHDRAW_POINTS) {
+  function getRandomAccuracy() {
 
-                document.getElementById('withdraw-status').textContent = `Minimum withdrawal amount is ${MIN_WITHDRAW_POINTS} points.`;
+    return (Math.random() * 20 + 80).toFixed(2);
 
-                return;
+  }
 
-            }
 
 
-            if (amount > earnedPoints) {
+  function toggleAssetSelection() {
 
-                document.getElementById('withdraw-status').textContent = `Insufficient balance. You have ${earnedPoints.toFixed(2)} points.`;
+    const mode = document.getElementById("mode").value;
 
-                return;
+    document.getElementById("assetSelection").style.display = mode === "ai" ? "none" : "block";
 
-            }
+  }
 
 
-            // Subtract points from earnedPoints after successful withdrawal
 
-            earnedPoints -= parseFloat(amount);
+  document.getElementById("signalForm").addEventListener("submit", function (e) {
 
-            document.getElementById('earned-points').textContent = earnedPoints.toFixed(2);
+    e.preventDefault();
 
+    playSound();
 
-            // Save the updated balance in localStorage
+    alert("Signal Generated! by A80X AI");
 
-            localStorage.setItem('earnedPoints', earnedPoints.toFixed(2));
 
 
-            // Send withdrawal request to admin via Telegram
+    const mode = document.getElementById("mode").value;
 
-            const message = `Withdrawal Request from ${telegramUserName}:\nAmount: ${amount} points\nPayment Method: ${paymentMethod}\nPhone Number: ${phoneNumber}`;
+    let asset = document.getElementById("asset").value;
 
-            sendWithdrawRequestToAdmin(message);
+    const exp = document.getElementById("expiration").value;
 
+    const count = parseInt(document.getElementById("count").value);
 
-            // Show success message
+    const tableBody = document.querySelector("#signalTable tbody");
 
-            document.getElementById('withdraw-status').textContent = 'Withdrawal request sent successfully!';
+    tableBody.innerHTML = "";
 
 
-            // Clear form
 
-            document.getElementById('withdraw-amount').value = '';
+    let currentTime = new Date();
 
-            document.getElementById('withdraw-phone').value = '';
 
-        }
 
+    for (let i = 0; i < count; i++) {
 
-        // Function to send withdrawal request to admin
+      const randomGap = Math.floor(Math.random() * 14) + 2; // 2–15 min random gap
 
-        function sendWithdrawRequestToAdmin(message) {
+      currentTime.setMinutes(currentTime.getMinutes() + randomGap);
 
-            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${ADMIN_USER_ID}&text=${encodeURIComponent(message)}`)
+      const timeStr = currentTime.toTimeString().slice(0, 5);
 
-                .then(response => response.json())
 
-                .then(data => {
 
-                    if (data.ok) {
+      if (mode === 'ai') {
 
-                        console.log('Message sent to admin');
+        asset = allPairs[Math.floor(Math.random() * allPairs.length)];
 
-                    }
+      }
 
-                })
+      const direction = directions[Math.floor(Math.random() * directions.length)];
 
-                .catch(error => console.error('Error sending message:', error));
+      const accuracy = getRandomAccuracy();
 
-        }
 
-    </script>
+
+      tableBody.innerHTML += `
+
+        <tr>
+
+          <td>${timeStr}</td>
+
+          <td>${asset}</td>
+
+          <td>${direction}</td>
+
+          <td>${exp}</td>
+
+          <td>${accuracy}%</td>
+
+          <td><button class="copy-btn" onclick="copySignal(this)">Copy</button></td>
+
+        </tr>`;
+
+    }
+
+
+
+    document.getElementById("signalTableContainer").style.display = "block";
+
+  });
+
+
+
+  function copySignal(button) {
+
+    const row = button.closest('tr');
+
+    const signal = Array.from(row.querySelectorAll('td'))
+
+      .map(cell => cell.innerText)
+
+      .join(' | ');
+
+    navigator.clipboard.writeText(signal).then(() => {
+
+      alert("Signal copied to clipboard!");
+
+    });
+
+  }
+
+
+
+function exportPDF() {
+
+  const { jsPDF } = window.jspdf;
+
+  const doc = new jsPDF();
+
+  doc.setFontSize(16);
+
+  doc.text("Signal Report BY ABS TEAM OFFICIAL", 14, 20);
+
+
+
+  const rows = [];
+
+  document.querySelectorAll("#signalTable tbody tr").forEach(tr => {
+
+    const cells = Array.from(tr.querySelectorAll("td")).map(td => td.innerText);
+
+    rows.push(cells);
+
+  });
+
+
+
+  doc.autoTable({
+
+    startY: 30,
+
+    head: [["Time", "Asset", "Direction", "Expiration", "Accuracy", "Copy"]],
+
+    body: rows,
+
+    didDrawPage: function (data) {
+
+      // 🔐 Hidden Watermark - bottom-left corner
+
+      doc.setTextColor(220, 220, 220); // extra light gray
+
+      doc.setFontSize(6); // very small text
+
+      doc.text("@update_abs", 5, doc.internal.pageSize.getHeight() - 5); // 5px from left and bottom
+
+    }
+
+  });
+
+
+
+  doc.save("signal_list @update_abs.pdf");
+
+}
+
+
+
+
+
+</script>
+
+
 
 </body>
 
